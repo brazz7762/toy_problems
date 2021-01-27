@@ -3,15 +3,19 @@
  * @return {number}
  */
 var reverse = function(x) {
-  if (x > 2147483648 || x < -2147483648){
-    return 0;
-  }
   var string = JSON.stringify(x)
   var outputArr = [];
   for(var j = string.length - 1; j >= 0; j--){
     outputArr.push(string[j])
   }
-  return parseInt(outputArr.join(''));
+  if(parseInt(outputArr.join('')) > 2147483648) {
+      return 0;
+  }
+  if(x > 0){
+      return parseInt(outputArr.join(''));
+  } else {
+      return -1*(parseInt(outputArr.join('')));
+  }
 };
 
 // Given a signed 32-bit integer x, return x with its digits reversed. If reversing x causes the value to go outside the signed 32-bit integer range [-231, 231 - 1], then return 0.
