@@ -1,13 +1,15 @@
 
 
 var removeDuplicates = function(nums) {
-  var noDup = new Set ([]);
-  for(var i = 0; i < nums.length; i++){
-      noDup.add(nums[i])
+  var i = 0;
+  for (var j = 1; j < nums.length; j++) {
+      if(nums[j] != nums[i]) {
+          i++;
+          nums[i] = nums[j]
+      }
   }
-  var newArr = Array.from(noDup)
-  return newArr.length;
-};
+  return i+1;
+}
 
 // Given a sorted array nums, remove the duplicates in-place such that each element appears only once and returns the new length.
 
